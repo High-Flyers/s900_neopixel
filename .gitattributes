@@ -1,2 +1,13 @@
+# Wyklucz build z Language stats
 build/ linguist-vendored
+
+# Wyklucz zewnętrzne komponenty
 components/esp-idf/ linguist-vendored
+components/led_strip/ linguist-vendored
+
+# Wyklucz wszystkie pliki Assembly i skrypty linkera
+*.S linguist-generated
+*.s linguist-generated
+*.asm linguist-generated
+*.ld linguist-generated
+*.cmake linguist-generated
