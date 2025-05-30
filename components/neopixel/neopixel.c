@@ -36,6 +36,34 @@ void backlight(led_strip_handle_t *strip, uint8_t brightness){
 	led_strip_refresh(*strip);
 }
 
+// Kolor 
+void colour(led_strip_handle_t *strip, uint8_t R, uint8_t G, uint8_t B){
+	for(int i = 0; i < LED_NUM ; i++)
+		led_strip_set_pixel(*strip, i, R, G, B);
+	
+	led_strip_refresh(*strip);
+}
+
+void blink (led_strip_handle_t *strip, uint8_t R, uint8_t G, uint8_t B){
+	static uint8_t counter = 0;
+	
+	if(counter < 12){
+	for(int i = 0; i < LED_NUM ; i++)
+		led_strip_set_pixel(*strip, i, R, G, B);
+	led_strip_refresh(*strip);
+	}
+	
+	else {
+		for(int i = 0; i < LED_NUM ; i++)
+		led_strip_set_pixel(*strip, i, 0, 0, 0);
+	led_strip_refresh(*strip);
+	}
+	
+	counter ++;
+	if (counter > 24)
+		counter = 0;
+}
+
 // Przeskok ze zmiana koloru
 void animate(led_strip_handle_t *strip)
 {

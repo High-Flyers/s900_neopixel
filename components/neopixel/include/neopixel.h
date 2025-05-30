@@ -14,4 +14,8 @@ void configure_strip(led_strip_handle_t *strip, uint8_t leds, uint8_t pin);
 
 void backlight(led_strip_handle_t *strip, uint8_t brightness);
 
+void colour(led_strip_handle_t *strip, uint8_t R, uint8_t G, uint8_t B);
+
+void blink (led_strip_handle_t *strip, uint8_t R, uint8_t G, uint8_t B);
+
 void animate(led_strip_handle_t *strip);

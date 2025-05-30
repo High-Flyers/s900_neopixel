@@ -35,19 +35,51 @@ void led_control(){
 		// PWM niski - jasny bialy
 		if (pwm_val > 800 && pwm_val < 1200) {
 			for(int i = 0; i < STRIP_NUM; i++) {
-				configure_strip(&strip[i], LED_NUM, map_pins[i]);
-				backlight(&strip[i], 200);
-				led_strip_del(strip[i]);
+				if(i==2 || i==5){}
+				else{
+					configure_strip(&strip[i], LED_NUM, map_pins[i]);
+					backlight(&strip[i], 255);
+					led_strip_del(strip[i]);
+				}
 			}
+			// Boki - zielony blink
+			configure_strip(&strip[2], LED_NUM, map_pins[2]);
+			blink(&strip[2], 0, 250, 0);
+			led_strip_del(strip[2]);
+			configure_strip(&strip[5], LED_NUM, map_pins[5]);
+			blink(&strip[5], 0, 250, 0);
+			led_strip_del(strip[5]);
 		}
 		// PWM wysoki - animacja
 		else if (pwm_val > 1800 && pwm_val < 2200) {
-			for(int i = 0; i < STRIP_NUM; i++) {
+			/*for(int i = 0; i < STRIP_NUM; i++) {
 				configure_strip(&strip[i], LED_NUM, map_pins[i]);
 				animate(&strip[i]);
 				led_strip_del(strip[i]);
-			}
+			}*/
+			// Przod - czerwony
+			configure_strip(&strip[0], LED_NUM, map_pins[0]);
+			colour(&strip[0], 250, 0, 0);
+			led_strip_del(strip[0]);
+			configure_strip(&strip[1], LED_NUM, map_pins[1]);
+			colour(&strip[1], 250, 0, 0);
+			led_strip_del(strip[2]);
+			// Boki - zielony blink
+			configure_strip(&strip[2], LED_NUM, map_pins[2]);
+			blink(&strip[2], 0, 250, 0);
+			led_strip_del(strip[2]);
+			configure_strip(&strip[5], LED_NUM, map_pins[5]);
+			blink(&strip[5], 0, 250, 0);
+			led_strip_del(strip[5]);
+			// Srodek - zielony
+			configure_strip(&strip[3], LED_NUM, map_pins[3]);
+			colour(&strip[3], 0, 250, 0);
+			led_strip_del(strip[3]);
+			configure_strip(&strip[4], LED_NUM, map_pins[4]);
+			colour(&strip[4], 0, 250 ,0);
+			led_strip_del(strip[4]);
 		}
+		
 		// brak PWM lub inna wartosc - podswietlenie o niskim natezeniu
 		else {
 			for(int i = 0; i < STRIP_NUM; i++) {
